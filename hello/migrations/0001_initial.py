@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
             name='Sitio',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=30)),
+                ('nombre', models.CharField(max_length=50)),
 				('latitud',	models.CharField(max_length=15)),
 				('longuitud',	models.CharField(max_length=15)),
 				('direccion', models.CharField(max_length=50)),
@@ -33,7 +33,7 @@ class Migration(migrations.Migration):
 				('apellido', models.CharField(max_length=15)),
 				('isFacebook', models.IntegerField()),
 				('correo',	models.CharField(max_length=30)),
-				('contrasenna', models.CharField(max_length=20)),
+				('contrasenna', models.CharField(max_length=30)),
 				('token', models.CharField(max_length=20)),
 				('imagen', models.CharField(max_length=200)),
             ],

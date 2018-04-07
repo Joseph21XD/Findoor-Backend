@@ -2,7 +2,7 @@ from django.db import models
 
 	
 class Sitio(models.Model):
-	nombre = models.CharField(max_length=30)
+	nombre = models.CharField(max_length=50)
 	latitud=	models.CharField(max_length=15)
 	longuitud=	models.CharField(max_length=15)
 	direccion = models.CharField(max_length=50)
@@ -18,7 +18,7 @@ class Persona(models.Model):
 	apellido = models.CharField(max_length=15)
 	isFacebook = models.IntegerField()
 	correo= models.CharField(max_length=30)
-	contrasenna= models.CharField(max_length=20)
+	contrasenna= models.CharField(max_length=30)
 	imagen = models.CharField(max_length=200)
 	token = models.CharField(max_length= 20)
 	
