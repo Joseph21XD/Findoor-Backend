@@ -1,0 +1,36 @@
+{% load staticfiles %}
+<html>
+
+	<head>
+        <title>McDona</title>
+
+
+		  <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+		 <link href="https://fonts.googleapis.com/css?family=Sofadi+One" rel="stylesheet">
+		  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+    </head>
+    <body>
+	<header id="main-header">
+		<nav>
+		</nav><!-- / nav -->
+	</header><!-- / #main-header -->
+	
+	<h1>Bienvenido a McDonas</h1>
+	<table style="width:%">
+	    <tr>
+			<th><img src="{% static 'donuts.jpg' %}" width="300" height="200"></th>
+			<th><img src="{% static 'variedades-donas.jpg' %}" width="300" height="200"></th> 
+			<th><h1>Cafeteria McDonas!</h1>
+		<p>Localización: 50 m oeste de la calle 12, Cartago, Costa Rica</p>
+		<p>Telefono: 22222222</p>
+		<p>Correo: donas@mcdonas.com</p></th> 
+	    </tr>
+	    <tr>
+			<th><img src="{% static 'donas1.jpg' %}" width="300" height="200"></th>
+			<th><img src="{% static 'donas2.jpg' %}" width="300" height="200"></th> 
+			<th><img src="{% static 'McDona.png' %}" width="300" height="200"></th> 
+		</tr>
+	</table>
+
+	</body>
+</html>

@@ -1,0 +1,296 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Helvetica, Arial, sans-serif;
+	color: #666;
+	background: white; 
+	font-size: 1em;
+	line-height: 1.5em;
+}
+ 
+h1 {
+	font-size: 2.3em;
+	line-height: 1.3em;
+	margin: 15px 0;
+	text-align: center;
+	font-weight: 300;
+	font-family: 'Gloria Hallelujah', cursive;
+	color: #FCA205;
+	font-size: 3em;
+}
+
+h2 {
+	line-height: 1.3em;
+	margin: 15px 0;
+	text-align: center;
+	font-weight: 300;
+	font-family: 'Verdana', bold;
+	color: #FCA205;
+	font-size: 1.7em;
+}
+ 
+p {
+	margin: 0 0 1.5em 0;
+	color: #FCA205;
+}
+ 
+img {
+	padding-left: 50px;
+}
+#main-header {
+	background-image: url("donaHeader.jpg");
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-attachment: fixed;
+	color: #FCA205;
+	height: 100px;
+}	
+	#main-header a {
+		color: white;
+		font-size: 1em;
+		font-family: 'Gloria Hallelujah', cursive;
+	}
+ 
+/*
+ * Logo
+ */
+#logo-header {
+	float: left;
+	padding: 15px 0 0 20px;
+	text-decoration: none;
+}
+	#logo-header:hover {
+		color: #0b76a6;
+	}
+	
+	#logo-header .site-name {
+		display: block;
+		font-weight: 700;
+		font-size: 3em;
+		font-family: 'Sofadi One', cursive;
+	}
+	
+	#logo-header .site-desc {
+		display: block;
+		font-weight: 300;
+		font-size: 0.8em;
+		color: #999;
+	}
+
+
+div {
+    border: 5px solid #FCA205;
+}
+ul.navbar {
+    position: absolute;
+    top: 8em;
+    Right: 4em;
+    width: 9em }
+
+th.nav {
+	
+	font-weight: 700;
+	font-size: 2em;
+	font-family: 'Sofadi One', cursive;
+	color: #FCA205;
+}	
+
+.head {
+	
+	font-weight: 700;
+	font-size: 1.5em;
+	font-family: 'Gloria Hallelujah', cursive;
+	color: #FCA205;
+	padding-left: 50px;
+	padding-top: 10px;
+}
+
+td.object {
+	font-size: 1.5em;
+	font-family: 'Sofadi One', cursive;
+	color: #FCA205;
+	padding-left: 50px;
+}	
+
+td.object a {
+	font-size: 1.5em;
+	font-family: 'Sofadi One', cursive;
+	color: #FCA205;
+	padding-left: 50px;
+	text-decoration:none; 
+	cursor: auto;
+}
+	
+nav {
+	float: right;
+}
+	nav ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		padding-right: 20px;
+	}
+	
+		nav ul li {
+			display: inline-block;
+			line-height: 80px;
+			color: white;
+		}
+			
+			nav ul li a {
+				display: block;
+				padding: 0 10px;
+				text-decoration: none;
+			}
+			
+				nav ul li a:hover {
+					background: #FCA205;
+				}
+				
+				
+input[type=text] {
+    padding:5px; 
+    border:2px solid #FCA205;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+input[type=text]:focus {
+    border-color:#FCA205;
+}
+
+input[type=password] {
+    padding:5px; 
+    border:2px solid #FCA205;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+input[type=entry] {
+    padding:5px; 
+    border:2px solid #FCA205;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+input[type=number] {
+    padding:5px; 
+    border:2px solid #FCA205;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+input[type=password]:focus {
+    border-color:#FCA205;
+}
+
+input[type=submit] {
+    padding:5px 15px; 
+	color: white;
+    background:#FCA205;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+	border-radius: 5px; 
+}
+	
+input[type=button] {
+    padding:5px 15px; 
+	color: white;
+    background:#FCA205;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+
+
+
+/*  CAPAS CONTENEDORAS  */
+ 
+#izquierda  {
+  width: 170px;
+  float: left;
+  }
+ 
+.derecha {
+  width: 750px;
+  float: left;
+  }
+ 
+/*  ELEMENTOS DEL MENU LATERAL  */
+ 
+#menu {
+  padding:0;
+  margin:0 auto;
+  list-style-type:none;
+  width:160px;
+  height:312px;
+  }
+#menu li a {
+  height:30px;
+  width:160px;
+  float:left;
+  border-bottom:2px solid #fff;
+  overflow: hidden;
+  }
+#menu li a img {
+  border:0;
+  }
+#menu li a:hover {
+  height:120px;
+  }
+ 
+/*  ELEMENTOS DEL MENU SUPERIOR */
+ 
+#menu2 {
+  padding:0;
+  margin:0 auto;
+  list-style-type:none;
+  height:120px;
+  width:354px;
+  }
+#menu2 li a {
+  width:30px;
+  height:120px;
+  float:left;
+  border-right:2px solid #fff;
+  overflow: hidden;
+  }
+#menu2 li a img {
+  border:0;
+  }
+#menu2 li a:hover {
+  background:#eee;
+  width:160px;
+  }
+ 
+/*  ELEMENTOS DE LA GALERIA DE IMAGENES */
+ 
+#galeria {
+  padding:0;
+  margin:40px auto 0 auto;
+  list-style-type:none;
+  height:300px;
+  width:774px;
+  border:1px solid #888;
+  }
+#galeria li {
+  width:60px;
+  height:300px;
+  float:left;
+  border-left:2px solid #000;
+  }
+#galeria li img {
+  height:300px;
+  width:60px;
+  border:0;
+  }
+#galeria li:hover {
+  background:#eee;
+  width:400px;
+  }
+#galeria li:hover img {
+  width:400px;
+  }
