@@ -15,7 +15,7 @@ h1 {
 	text-align: center;
 	font-weight: 300;
 	font-family: 'Gloria Hallelujah', cursive;
-	color: #FCA205;
+	color: #AC1900;
 	font-size: 3em;
 }
 
@@ -25,13 +25,13 @@ h2 {
 	text-align: center;
 	font-weight: 300;
 	font-family: 'Verdana', bold;
-	color: #FCA205;
+	color: #AC1900;
 	font-size: 1.7em;
 }
  
 p {
 	margin: 0 0 1.5em 0;
-	color: #FCA205;
+	color: #AC1900;
 }
  
 img {
@@ -42,7 +42,7 @@ img {
     background-repeat: no-repeat;
     background-position: left top;
     background-attachment: fixed;
-	color: #FCA205;
+	color: #AC1900;
 	height: 100px;
 }	
 	#main-header a {
@@ -79,7 +79,7 @@ img {
 
 
 div {
-    border: 5px solid #FCA205;
+    border: 5px solid #AC1900;
 }
 ul.navbar {
     position: absolute;
@@ -92,7 +92,7 @@ th.nav {
 	font-weight: 700;
 	font-size: 2em;
 	font-family: 'Sofadi One', cursive;
-	color: #FCA205;
+	color: #AC1900;
 }	
 
 .head {
@@ -100,7 +100,7 @@ th.nav {
 	font-weight: 700;
 	font-size: 1.5em;
 	font-family: 'Gloria Hallelujah', cursive;
-	color: #FCA205;
+	color: #AC1900;
 	padding-left: 50px;
 	padding-top: 10px;
 }
@@ -108,14 +108,14 @@ th.nav {
 td.object {
 	font-size: 1.5em;
 	font-family: 'Sofadi One', cursive;
-	color: #FCA205;
+	color: #AC1900;
 	padding-left: 50px;
 }	
 
 td.object a {
 	font-size: 1.5em;
 	font-family: 'Sofadi One', cursive;
-	color: #FCA205;
+	color: #AC1900;
 	padding-left: 50px;
 	text-decoration:none; 
 	cursor: auto;
@@ -144,50 +144,50 @@ nav {
 			}
 			
 				nav ul li a:hover {
-					background: #FCA205;
+					background: #AC1900;
 				}
 				
 				
 input[type=text] {
     padding:5px; 
-    border:2px solid #FCA205;
+    border:2px solid #AC1900;
     -webkit-border-radius: 5px;
     border-radius: 5px;
 }
 
 input[type=text]:focus {
-    border-color:#FCA205;
+    border-color:#AC1900;
 }
 
 input[type=password] {
     padding:5px; 
-    border:2px solid #FCA205;
+    border:2px solid #AC1900;
     -webkit-border-radius: 5px;
     border-radius: 5px;
 }
 
 input[type=entry] {
     padding:5px; 
-    border:2px solid #FCA205;
+    border:2px solid #AC1900;
     -webkit-border-radius: 5px;
     border-radius: 5px;
 }
 
 input[type=number] {
     padding:5px; 
-    border:2px solid #FCA205;
+    border:2px solid #AC1900;
     -webkit-border-radius: 5px;
     border-radius: 5px;
 }
 
 input[type=password]:focus {
-    border-color:#FCA205;
+    border-color:#AC1900;
 }
 
 input[type=submit] {
     padding:5px 15px; 
 	color: white;
-    background:#FCA205;
+    background:#AC1900;
     border:0 none;
     cursor:pointer;
     -webkit-border-radius: 5px;
@@ -197,7 +197,7 @@ input[type=submit] {
 input[type=button] {
     padding:5px 15px; 
 	color: white;
-    background:#FCA205;
+    background:#AC1900;
     border:0 none;
     cursor:pointer;
     -webkit-border-radius: 5px;
