@@ -346,7 +346,7 @@ def coorToInt(coor):
 	return int("".join(l))
 	
 def index(request):
-	return HttpResponse("Bienvenido a Findoor!")
+	return render(request, 'index.html')
 	
 def seguir(request, id_persona, tok):
 	validate= Persona.objects.filter(token=tok)
