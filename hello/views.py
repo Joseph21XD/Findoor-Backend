@@ -84,7 +84,7 @@ def loginByCredentials(request, mail, pwd):
 	pwd=deparsear(pwd)
 	person= Persona.objects.filter(correo=mail, contrasenna= pwd)
 	if(len(person)>0):
-		persona="{ id : "+str(person[0].id)+" , nombre : "+parsear(person[0].nombre)+" , apellido : "+parsear(person[0].apellido)+" , imagen : "+parsear(person[0].imagen)+" , correo : "+parsear(person[0].correo)+" , contrasenna : "+parsear(person[0].contrasenna)+" , token : "+person[0].token+" }"
+		persona="{ id : "+str(person[0].id)+" , nombre : "+parsear(person[0].nombre)+" , apellido : "+parsear(person[0].apellido)+" , imagen : "+parsear(person[0].imagen)+" , isface : "+parsear(person[0].isFacebook)+" , correo : "+parsear(person[0].correo)+" , contrasenna : "+parsear(person[0].contrasenna)+" , token : "+person[0].token+" }"
 		return HttpResponse(persona)
 	else:
 		raise Http404
@@ -92,7 +92,7 @@ def loginByCredentials(request, mail, pwd):
 def loginByToken(request, tok):
 	person= Persona.objects.filter(token=tok)
 	if(len(person)>0):
-		persona="{ id : "+str(person[0].id)+" , nombre : "+parsear(person[0].nombre)+" , apellido : "+parsear(person[0].apellido)+" , imagen : "+parsear(person[0].imagen)+" , correo : "+parsear(person[0].correo)+" , contrasenna : "+parsear(person[0].contrasenna)+" , token : "+person[0].token+" }"
+		persona="{ id : "+str(person[0].id)+" , nombre : "+parsear(person[0].nombre)+" , apellido : "+parsear(person[0].apellido)+" , imagen : "+parsear(person[0].imagen)+" , isface : "+parsear(person[0].isFacebook)+" , correo : "+parsear(person[0].correo)+" , contrasenna : "+parsear(person[0].contrasenna)+" , token : "+person[0].token+" }"
 		return HttpResponse(persona)
 	else:
 		raise Http404
