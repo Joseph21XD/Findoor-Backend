@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Persona, Sitio, Visitado, Favorito, Comentario, Recomendacion, Calificacion
+from .models import Persona, Sitio, Visitado, Favorito, Comentario, Recomendacion, Calificacion, Seguidor
 from django.http import Http404
 import string
 import random
@@ -10,10 +10,10 @@ def lista_persona(lista):
 		personas= "{ personas : ["
 		for i in range(len(lista)):
 			if(i!=len(lista)-1):
-				personas+="{id : "+parsear(str(lista[i].id))+" , nombre : "+parsear(lista[i].nombre)+" , apellido : "+parsear(lista[i].apellido)+" , imagen : "+parsear(lista[i].imagen)+" ,"
+				personas+="{ id : "+parsear(str(lista[i].id))+" , nombre : "+parsear(lista[i].nombre)+" , apellido : "+parsear(lista[i].apellido)+" , imagen : "+parsear(lista[i].imagen)+" } ,"
 			else:
-				personas+="{id : "+parsear(str(lista[i].id))+" , nombre : "+parsear(lista[i].nombre)+" , apellido : "+parsear(lista[i].apellido)+" , imagen : "+parsear(lista[i].imagen)+" }"
-		personas+="], token :"+validate[0].token+" }"
+				personas+="{ id : "+parsear(str(lista[i].id))+" , nombre : "+parsear(lista[i].nombre)+" , apellido : "+parsear(lista[i].apellido)+" , imagen : "+parsear(lista[i].imagen)+" }"
+		personas+="] , token : "+validate[0].token+" }"
 		return personas
 	
 
@@ -25,7 +25,7 @@ def personJson(request, tok):
 		validate[0].save()
 		if(len(lista)==0):
 			return HttpResponse("")
-		return HttpResponse(lista_persona(lista))
+		return HttpResponse(lista_persona(lista, validate[0]))
 	else:
 		raise Http404
 
@@ -38,16 +38,16 @@ def person_id_Json(request, id_personaje, tok):
 		validate[0].save()
 		if(len(lista)==0):
 			return HttpResponse("")
-		return HttpResponse(lista_persona(lista))
+		return HttpResponse(lista_persona(lista, validate[0]))
 	else:
 		raise Http404
 	
 def person_add(request, name, lastName, isFace, mail, pwd, img):
 	name= deparsear(name)
-	lastname= deparsear(lastName)
+	lastName= deparsear(lastName)
 	mail= deparsear(mail)
 	pwd= deparsear(pwd)
-	img= deparsear(pwd)
+	img= deparsear(img)
 	i= len(Persona.objects.all())
 	tok=getToken()
 	p= Persona(nombre= name, apellido= lastName,  isFacebook= isFace, correo=mail , contrasenna= pwd, imagen= img, token= tok)
@@ -84,7 +84,7 @@ def loginByCredentials(request, mail, pwd):
 	pwd=deparsear(pwd)
 	person= Persona.objects.filter(correo=mail, contrasenna= pwd)
 	if(len(person)>0):
-		persona="{ id : "+str(person[0].id)+" , nombre : "+parsear(person[0].nombre)+" , apellido : "+parsear(person[0].apellido)+" , imagen : "+parsear(person[0].imagen)+" , correo : "+parsear(person[0].correo)+" , contrasenna : "+parsear(person[0].contrasenna)+" , token : "+person[0].token+"}"
+		persona="{ id : "+str(person[0].id)+" , nombre : "+parsear(person[0].nombre)+" , apellido : "+parsear(person[0].apellido)+" , imagen : "+parsear(person[0].imagen)+" , correo : "+parsear(person[0].correo)+" , contrasenna : "+parsear(person[0].contrasenna)+" , token : "+person[0].token+" }"
 		return HttpResponse(persona)
 	else:
 		raise Http404
@@ -92,7 +92,7 @@ def loginByCredentials(request, mail, pwd):
 def loginByToken(request, tok):
 	person= Persona.objects.filter(token=tok)
 	if(len(person)>0):
-		persona="{ id : "+str(person[0].id)+" , nombre : "+parsear(person[0].nombre)+" , apellido : "+parsear(person[0].apellido)+" , imagen : "+parsear(person[0].imagen)+" , correo : "+parsear(person[0].correo)+" , contrasenna : "+parsear(person[0].contrasenna)+" , token : "+person[0].token+"}"
+		persona="{ id : "+str(person[0].id)+" , nombre : "+parsear(person[0].nombre)+" , apellido : "+parsear(person[0].apellido)+" , imagen : "+parsear(person[0].imagen)+" , correo : "+parsear(person[0].correo)+" , contrasenna : "+parsear(person[0].contrasenna)+" , token : "+person[0].token+" }"
 		return HttpResponse(persona)
 	else:
 		raise Http404
@@ -114,10 +114,10 @@ def sitioToJson(lista, token):
 	for i in range(len(lista)):
 			if(i!=len(lista)-1):
 				sites+="{ id : "+str(lista[i].id)+" , nombre : "+ parsear(lista[i].nombre) +" , latitud : "+parsear(lista[i].latitud)+" , longuitud : "+parsear(lista[i].longuitud)
-				sites+=" , imagen : "+parsear(lista[i].imagen)+" , descripcion :"+ parsear(lista[i].descripcion) +" , direccion : "+parsear(lista[i].direccion)+" } , "
+				sites+=" , imagen : "+parsear(lista[i].imagen)+" , descripcion : "+ parsear(lista[i].descripcion) +" , direccion : "+parsear(lista[i].direccion)+" } , "
 			else:
 				sites+="{ id : "+str(lista[i].id)+" , nombre : "+ parsear(lista[i].nombre) +" , latitud : "+parsear(lista[i].latitud)+" , longuitud : "+parsear(lista[i].longuitud)
-				sites+=" , imagen : "+parsear(lista[i].imagen)+" , descripcion :"+ parsear(lista[i].descripcion) +" , direccion : "+parsear(lista[i].direccion)+" } "
+				sites+=" , imagen : "+parsear(lista[i].imagen)+" , descripcion : "+ parsear(lista[i].descripcion) +" , direccion : "+parsear(lista[i].direccion)+" } "
 	sites+="], token : "+token+" }"
 	return sites
 	
@@ -157,7 +157,6 @@ def sitio_comment(request, id_site, comment, tok):
 	comment= deparsear(comment)
 	if(len(validate)>0):
 		site= Sitio.objects.filter(id= id_site)
-		comment= parsear(comment)
 		comm= Comentario(persona= validate[0], sitio=site[0], comentario= comment)
 		comm.save()
 		k= getToken()
@@ -244,7 +243,7 @@ def sitio_ranking_Json(request, tok):
 		validate[0].save()
 		lista=[]
 		lista= getRanking()
-		sites= sitioToJson(lista)
+		sites= sitioToJson(lista, tok)
 		return HttpResponse(sites)
 	else:
 		raise Http404
@@ -339,7 +338,7 @@ def seguidores(request, tok):
 		personas= "{ personas : ["
 		for i in range(len(lista)):
 			if(i!=len(lista)-1):
-				personas+="{ id : "+str(lista[i].seguidor.id)+" , nombre : "+parsear(lista[i].seguidor.nombre)+" , apellido : "+parsear(lista[i].seguidor.apellido)+" , imagen : "+parsear(lista[i].seguidor.imagen)+" },"
+				personas+="{ id : "+str(lista[i].seguidor.id)+" , nombre : "+parsear(lista[i].seguidor.nombre)+" , apellido : "+parsear(lista[i].seguidor.apellido)+" , imagen : "+parsear(lista[i].seguidor.imagen)+" } ,"
 			else:
 				personas+="{ id : "+str(lista[i].seguidor.id)+" , nombre : "+parsear(lista[i].seguidor.nombre)+" , apellido : "+parsear(lista[i].seguidor.apellido)+" , imagen : "+parsear(lista[i].seguidor.imagen)+" }"
 		personas+="] , token :"+validate[0].token+" }"
@@ -357,7 +356,7 @@ def seguidos(request, tok):
 		personas= "{ personas : ["
 		for i in range(len(lista)):
 			if(i!=len(lista)-1):
-				personas+="{ id : "+str(lista[i].seguido.id)+" , nombre : "+parsear(lista[i].seguido.nombre)+" , apellido : "+parsear(lista[i].seguido.apellido)+" , imagen : "+parsear(lista[i].seguido.imagen)+" },"
+				personas+="{ id : "+str(lista[i].seguido.id)+" , nombre : "+parsear(lista[i].seguido.nombre)+" , apellido : "+parsear(lista[i].seguido.apellido)+" , imagen : "+parsear(lista[i].seguido.imagen)+" } ,"
 			else:
 				personas+="{ id : "+str(lista[i].seguido.id)+" , nombre : "+parsear(lista[i].seguido.nombre)+" , apellido : "+parsear(lista[i].seguido.apellido)+" , imagen : "+parsear(lista[i].seguido.imagen)+" }"
 		personas+="] , token :"+validate[0].token+" }"
