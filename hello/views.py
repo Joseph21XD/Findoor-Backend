@@ -6,14 +6,14 @@ import string
 import random
 
 
-def lista_persona(lista):
+def lista_persona(lista, token):
 		personas= "{ personas : ["
 		for i in range(len(lista)):
 			if(i!=len(lista)-1):
 				personas+="{ id : "+parsear(str(lista[i].id))+" , nombre : "+parsear(lista[i].nombre)+" , apellido : "+parsear(lista[i].apellido)+" , imagen : "+parsear(lista[i].imagen)+" } ,"
 			else:
 				personas+="{ id : "+parsear(str(lista[i].id))+" , nombre : "+parsear(lista[i].nombre)+" , apellido : "+parsear(lista[i].apellido)+" , imagen : "+parsear(lista[i].imagen)+" }"
-		personas+="] , token : "+validate[0].token+" }"
+		personas+="] , token : "+token+" }"
 		return personas
 	
 
@@ -25,7 +25,7 @@ def personJson(request, tok):
 		validate[0].save()
 		if(len(lista)==0):
 			return HttpResponse("")
-		return HttpResponse(lista_persona(lista, validate[0]))
+		return HttpResponse(lista_persona(lista, validate[0].token))
 	else:
 		raise Http404
 
@@ -38,7 +38,7 @@ def person_id_Json(request, id_personaje, tok):
 		validate[0].save()
 		if(len(lista)==0):
 			return HttpResponse("")
-		return HttpResponse(lista_persona(lista, validate[0]))
+		return HttpResponse(lista_persona(lista, validate[0].token))
 	else:
 		raise Http404
 	
