@@ -16,7 +16,6 @@ def lista_persona(lista, token):
 		personas+="] , token : "+token+" }"
 		return personas
 	
-
 def personJson(request, tok):
 	validate= Persona.objects.filter(token=tok)	
 	if(len(validate)>0):
@@ -43,19 +42,23 @@ def person_id_Json(request, id_personaje, tok):
 		raise Http404
 	
 def person_add(request, name, lastName, isFace, mail, pwd, img):
-	name= deparsear(name)
-	lastName= deparsear(lastName)
-	mail= deparsear(mail)
-	pwd= deparsear(pwd)
-	img= deparsear(img)
-	i= len(Persona.objects.all())
-	tok=getToken()
-	p= Persona(nombre= name, apellido= lastName,  isFacebook= isFace, correo=mail , contrasenna= pwd, imagen= img, token= tok)
-	p.save()
-	k= len(Persona.objects.all())
-	if( k > i):
-		return HttpResponse(tok)
-	else :
+	validate= Persona.objects.filter(correo=mail)
+	if(len(validate)==0)
+		name= deparsear(name)
+		lastName= deparsear(lastName)
+		mail= deparsear(mail)
+		pwd= deparsear(pwd)
+		img= deparsear(img)
+		i= len(Persona.objects.all())
+		tok=getToken()
+		p= Persona(nombre= name, apellido= lastName,  isFacebook= isFace, correo=mail , contrasenna= pwd, imagen= img, token= tok)
+		p.save()
+		k= len(Persona.objects.all())
+		if( k > i):
+			return HttpResponse(tok)
+		else :
+			raise Http404
+	else:
 		raise Http404
 
 def person_update(request,id_persona, name, lastName, isFace,mail, pwd, img, tok):
