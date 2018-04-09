@@ -42,11 +42,11 @@ def person_id_Json(request, id_personaje, tok):
 		raise Http404
 	
 def person_add(request, name, lastName, isFace, mail, pwd, img):
+	mail= deparsear(mail)
 	validate= Persona.objects.filter(correo=mail)
 	if(len(validate)==0):
 		name= deparsear(name)
 		lastName= deparsear(lastName)
-		mail= deparsear(mail)
 		pwd= deparsear(pwd)
 		img= deparsear(img)
 		i= len(Persona.objects.all())
