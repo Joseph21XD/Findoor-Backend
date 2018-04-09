@@ -43,7 +43,7 @@ def person_id_Json(request, id_personaje, tok):
 	
 def person_add(request, name, lastName, isFace, mail, pwd, img):
 	validate= Persona.objects.filter(correo=mail)
-	if(len(validate)==0)
+	if(len(validate)==0):
 		name= deparsear(name)
 		lastName= deparsear(lastName)
 		mail= deparsear(mail)
