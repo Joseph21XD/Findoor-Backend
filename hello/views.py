@@ -409,8 +409,13 @@ def sitio_ranking_add(request, id_site, rank, tok):
 		site= Sitio.objects.get(id=id_site)
 		validate[0].token= tok
 		validate[0].save()
-		ranked= Calificacion(persona= validate[0], sitio= site, rate=rank)
-		ranked.save()
+		cal= Calificacion.objects.filter(persona= validate[0], sitio= site)
+		if(len(cal)>0):
+			cal[0].rate= rank
+			cal[0].save()
+		else:
+			ranked= Calificacion(persona= validate[0], sitio= site, rate=rank)
+			ranked.save()
 		return HttpResponse(tok)
 	else:
 		raise Http404
@@ -431,4 +436,62 @@ def sitio_ranking_get(request, id_site, tok):
 		return HttpResponse(personas)
 	else:
 		raise Http404
+	
+def sitio_type_get(request,type,  id_site, tok):
+	validate= Persona.objects.filter(token=tok)
+	if(len(validate)>0):
+		k= getToken()
+		validate[0].token= k
+		validate[0].save()
+		site= Sitio.objects.get(id= id_site)
+		if(type=="VISITED"):
+			visita= Visitado.objects.filter(persona=validate[0], sitio= site)
+			if(len(visita)>0):
+				personas+="{ respuesta : True , token : " +validate[0].token+" }"
+			else:
+				personas+="{ respuesta : False , token : "+validate[0].token+" }"
+			return HttpResponse(personas)
+		elif(type=="FAVORITE"):
+			favorito= Favorito.objects.filter(persona=validate[0], sitio= site)
+			if(len(favorito)>0):
+				personas+="{ respuesta : True , token : " +validate[0].token+" }"
+			else:
+				personas+="{ respuesta : False , token : "+validate[0].token+" }"
+			return HttpResponse(personas)
+		raise Http404
+	else:
+		raise Http404
+		
+def sitio_type_delete(request,type,id_site,tok):
+	if(len(validate)>0):
+		k= getToken()
+		validate[0].token= k
+		validate[0].save()
+		site= Sitio.objects.get(id= id_site)
+		if(type=="VISITED"):
+			visita= Visitado.objects.filter(persona=validate[0], sitio= site)
+			visita[0].delete()
+			return HttpResponse(k)
+		elif(type=="FAVORITE"):
+			favorito= Favorito.objects.filter(persona=validate[0], sitio= site)
+			favorito[0].delete()
+			return HttpResponse(k)
+		raise Http404
+	else:
+		raise Http404
+
+def seguido_delete(request, id_persona, tok):
+	validate= Persona.objects.filter(token=tok)
+	if(len(validate)>0):
+		persona= Persona.objects.get(id= id_persona)
+		seg= Seguidor.objects.filter(seguidor= validate[0], seguido= persona)
+		seg[0].delete()
+		tok= getToken()
+		validate[0].token= tok
+		validate[0].save()
+		return HttpResponse(tok)
+	else:
+		raise Http404
+
+
 	

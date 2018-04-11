@@ -35,4 +35,8 @@ urlpatterns = [
 	url(r'^sitio/add/TYPE=(?P<type>[-\w]+)/(?P<id_site>[-\w]+)/KEY=(?P<tok>[-\w]+)/$', hello.views.sitio_type_add, name='sitio_type_add'),
 	url(r'^sitio/ranking/add/(?P<id_site>[-\w]+)/(?P<rank>\d+)/KEY=(?P<tok>[-\w]+)/$', hello.views.sitio_ranking_add, name='sitio_ranking_add'),
 	url(r'^sitio/ranking/get/(?P<id_site>[-\w]+)/KEY=(?P<tok>[-\w]+)/$', hello.views.sitio_ranking_get, name='sitio_ranking_get'),
+	
+	url(r'^sitio/get/TYPE=(?P<type>[-\w]+)/(?P<id_site>[-\w]+)/KEY=(?P<tok>[-\w]+)/$', hello.views.sitio_type_get, name='sitio_type_get'),
+	url(r'^sitio/delete/TYPE=(?P<type>[-\w]+)/(?P<id_site>[-\w]+)/KEY=(?P<tok>[-\w]+)/$', hello.views.sitio_type_delete, name='sitio_type_delete'),
+	url(r'^persona/delete/(?P<id_persona>\d+)/KEY=(?P<tok>[-\w]+)/$', hello.views.seguido_delete, name='seguido_delete'),
 ]
