@@ -446,17 +446,19 @@ def sitio_type_get(request,type,  id_site, tok):
 		site= Sitio.objects.get(id= id_site)
 		if(type=="VISITED"):
 			visita= Visitado.objects.filter(persona=validate[0], sitio= site)
+			personas=""
 			if(len(visita)>0):
-				personas+="{ respuesta : True , token : " +validate[0].token+" }"
+				personas="{ respuesta : True , token : " +validate[0].token+" }"
 			else:
-				personas+="{ respuesta : False , token : "+validate[0].token+" }"
+				personas="{ respuesta : False , token : "+validate[0].token+" }"
 			return HttpResponse(personas)
 		elif(type=="FAVORITE"):
 			favorito= Favorito.objects.filter(persona=validate[0], sitio= site)
+			personas=""
 			if(len(favorito)>0):
-				personas+="{ respuesta : True , token : " +validate[0].token+" }"
+				personas="{ respuesta : True , token : " +validate[0].token+" }"
 			else:
-				personas+="{ respuesta : False , token : "+validate[0].token+" }"
+				personas="{ respuesta : False , token : "+validate[0].token+" }"
 			return HttpResponse(personas)
 		raise Http404
 	else:
