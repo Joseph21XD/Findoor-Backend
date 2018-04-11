@@ -465,6 +465,7 @@ def sitio_type_get(request,type,  id_site, tok):
 		raise Http404
 		
 def sitio_type_delete(request,type,id_site,tok):
+	validate= Persona.objects.filter(token=tok)
 	if(len(validate)>0):
 		k= getToken()
 		validate[0].token= k
