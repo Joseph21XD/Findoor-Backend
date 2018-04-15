@@ -307,12 +307,10 @@ def deparsear(s):
 	
 def coorToInt(coor):
 	lista= list(coor)
+	i= lista.index(".")
 	lista.remove(".")
 	l=[]
-	if "-" in lista:
-		l= lista[:5]
-	else:
-		l= lista[:4]
+	l= lista[:i+3]
 	return int("".join(l))
 	
 def index(request):
@@ -371,7 +369,7 @@ def get_seguido(request, id_persona, tok):
 	validate= Persona.objects.filter(token=tok)
 	if(len(validate)>0):
 		persona= Persona.objects.filter(id= id_persona) 
-		lista= Seguidor.objects.filter(seguidor= validate[0], seguido= persona)
+		lista= Seguidor.objects.filter(seguidor= validate[0], seguido= persona[0])
 		tok= getToken()
 		validate[0].token= tok
 		validate[0].save()
