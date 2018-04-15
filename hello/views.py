@@ -485,7 +485,7 @@ def seguido_delete(request, id_persona, tok):
 	validate= Persona.objects.filter(token=tok)
 	if(len(validate)>0):
 		persona= Persona.objects.get(id= id_persona)
-		seg= Seguidor.objects.filter(seguidor= validate[0], seguido= persona[0])
+		seg= Seguidor.objects.filter(seguidor= validate[0], seguido= persona)
 		seg[0].delete()
 		tok= getToken()
 		validate[0].token= tok
