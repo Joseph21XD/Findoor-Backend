@@ -374,10 +374,10 @@ def get_seguido(request, id_persona, tok):
 		validate[0].token= tok
 		validate[0].save()
 		personas=""
-		if(len(persona)>0):
-			personas+="{ respuesta : True , token : "+validate[0].nombre+" }"+persona[0].nombre
+		if(len(lista)>0):
+			personas+="{ respuesta : True , token : "+validate[0].token+" }"
 		else:
-			personas+="{ respuesta : False , token : "+validate[0].nombre+" }"+persona[0].nombre
+			personas+="{ respuesta : False , token : "+validate[0].token+" }"
 		return HttpResponse(personas)
 	else:
 		raise Http404	
