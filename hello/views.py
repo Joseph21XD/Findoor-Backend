@@ -375,9 +375,9 @@ def get_seguido(request, id_persona, tok):
 		validate[0].save()
 		personas=""
 		if(len(persona)>0):
-			personas+="{ respuesta : True , token : "+validate[0].token+" }"
+			personas+="{ respuesta : True , token : "+validate[0].nombre+" }"+persona[0].nombre
 		else:
-			personas+="{ respuesta : False , token : "+validate[0].token+" }"
+			personas+="{ respuesta : False , token : "+validate[0].nombre+" }"+persona[0].nombre
 		return HttpResponse(personas)
 	else:
 		raise Http404	
