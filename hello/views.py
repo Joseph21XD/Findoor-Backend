@@ -262,7 +262,7 @@ def sitio_close(request, lat , lon, tok):
 			coors.append([i,coorToInt(i.latitud),coorToInt(i.longuitud)])
 		lista=[]		
 		for j in coors:
-			if abs(lat-j[1])<=1 and abs(lon-j[2])<=1:
+			if abs(lat-j[1])<=2 and abs(lon-j[2])<=2:
 				lista.append(j[0])
 		tok= getToken()
 		validate[0].token=tok
@@ -310,7 +310,7 @@ def coorToInt(coor):
 	i= lista.index(".")
 	lista.remove(".")
 	l=[]
-	l= lista[:i+3]
+	l= lista[:i+2]
 	return int("".join(l))
 	
 def index(request):
