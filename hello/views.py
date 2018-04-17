@@ -4,7 +4,6 @@ from .models import Persona, Sitio, Visitado, Favorito, Comentario, Recomendacio
 from django.http import Http404
 import string
 import random
-
 def lista_persona(lista, token):
 		personas= "{ personas : ["
 		for i in range(len(lista)):
@@ -504,7 +503,7 @@ def parsear(s):
 	return resultado
 
 def deparsear(s):
-    dict_1= {"D":":", "S":"/","P":".","R":"_","G":"-","C":",","A":"&","V":"%","E":"=","I":"?","K":"@","U":"!","W":"#","B":"¡","F":"¿","H":"<","J":">","L":"[","M":"]","N":"(","O":")","Q":"\n","T":"\"","X":" ","Y":";", "Z":"$"}
+    dict_1= {"D":":", "S":"/","P":".","R":"_","G":"-","C":",","A":"&","V":"%","E":"=","I":"?","K":"@","U":"!","W":"#","B":"¡","F":"¿","H":"<","J":">","L":"[","M":"]","N":"(","O":")","Q":"\n","T":"\"","X":" ","Y":";","Z":"$"}
 	lista= list(s)
 	dict_2= { "A":"á","E":"é","I":"í","O":"ó","U":"ú","B":"Á","C":"É","D":"Í","F":"Ó","G":"Ú"}
 	resultado=""
