@@ -274,7 +274,8 @@ def sitio_close(request, lat , lon, tok):
 def parsear(s):
     dict_1= {":":"D", "/":"S",".":"P","_":"R","-":"G",",":"C","&":"A","%":"V","=":"E","?":"I","@":"K",
          "!":"U","#":"W","¡":"B","¿":"F","<":"H",">":"J","[":"L","]":"M","(":"N",")":"O","\n":"Q",
-         "\"":"T"," ":"X",";":"Y", "$":"Z"}
+         "\"":"T"," ":"X",";":"Y", "$":"Z", "á":"_A", "é":"_E", "í":"_I", "ó":"_O", "ú":"_U", "Á":"_B", "É":"_C",
+		 "Í":"_D", "Ó":"_F", "Ú":"_G"}
     lista= list(s)
     resultado=""
     for i in lista:
@@ -290,12 +291,17 @@ def deparsear(s):
     dict_1= {"D":":", "S":"/","P":".","R":"_","G":"-","C":",","A":"&","V":"%","E":"=","I":"?","K":"@",
          "U":"!","W":"#","B":"¡","F":"¿","H":"<","J":">","L":"[","M":"]","N":"(","O":")","Q":"\n",
          "T":"\"","X":" ","Y":";", "Z":"$"}
+	dict_2={ "A":"á", "E":"é", "I":"í", "O":"ó", "U":"ú", "B":"Á", "C":"É",
+		 "D":"Í", "F":"Ó", "G":"Ú"}
     lista= list(s)
     resultado=""
     est= True
     for i in lista:
         if(est==False):
-            resultado+=i.upper()
+			if(i.isupper()):
+				resultado+=dict_2[i]
+			else:
+				resultado+=i.upper()
             est= True
         elif(i in dict_1):
             resultado+=dict_1[i]
