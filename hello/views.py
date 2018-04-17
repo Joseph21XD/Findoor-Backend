@@ -494,7 +494,7 @@ def seguido_delete(request, id_persona, tok):
 	else:
 		raise Http404
 
-def loginfacebook(request, name, lastName, isFace, mail, pwd, img):
+def login_facebook(request, name, lastName, isFace, mail, pwd, img):
 	mail= deparsear(mail)
 	name= deparsear(name)
 	lastName= deparsear(lastName)
