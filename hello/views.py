@@ -276,14 +276,14 @@ def parsear(s):
          "\"":"T"," ":"X",";":"Y", "$":"Z", "á":"_A", "é":"_E", "í":"_I", "ó":"_O", "ú":"_U", "Á":"_B", "É":"_C","Í":"_D", "Ó":"_F", "Ú":"_G"}
 	lista= list(s)
 	resultado=""
-    for i in lista:
-        if(i in dict_1):
-            resultado+=dict_1[i]
-        elif(i.islower() or i.isdigit()):
-            resultado+=i
-        elif(i.isupper()):
-            resultado+="_"+i.lower()
-    return resultado
+	for i in lista:
+		if(i in dict_1):
+			resultado+=dict_1[i]
+		elif(i.islower() or i.isdigit()):
+			resultado+=i
+		elif(i.isupper()):
+			resultado+="_"+i.lower()
+	return resultado
 
 def deparsear(s):
     dict_1= {"D":":", "S":"/","P":".","R":"_","G":"-","C":",","A":"&","V":"%","E":"=","I":"?","K":"@",
