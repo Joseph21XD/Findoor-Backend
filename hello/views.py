@@ -501,7 +501,7 @@ def login_facebook(request, name, lastName, isFace, mail, pwd, img):
 	pwd= deparsear(pwd)
 	img= deparsear(img)
 	tok=getToken()
-	validate= Persona.objects.get(correo=mail)
+	validate= Persona.objects.filter(correo=mail)
 	person=[]
 	if(len(validate)>0):
 		validate[0].nombre=name
