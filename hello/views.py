@@ -506,7 +506,7 @@ def login_facebook(request, name, lastName, isFace, mail, pwd, img):
 	if(len(validate)>0):
 		validate[0].nombre=name
 		validate[0].apellido=lastName
-		validate[0].isFacebook=isface
+		validate[0].isFacebook=isFace
 		validate[0].correo=mail
 		validate[0].contrasenna=pwd
 		validate[0].imagen=img
