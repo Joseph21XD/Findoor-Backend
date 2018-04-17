@@ -275,7 +275,7 @@ def parsear(s):
          "!":"U","#":"W","¡":"B","¿":"F","<":"H",">":"J","[":"L","]":"M","(":"N",")":"O","\n":"Q",
          "\"":"T"," ":"X",";":"Y", "$":"Z", "á":"_A", "é":"_E", "í":"_I", "ó":"_O", "ú":"_U", "Á":"_B", "É":"_C","Í":"_D", "Ó":"_F", "Ú":"_G"}
 	lista= list(s)
-    resultado=""
+	resultado=""
     for i in lista:
         if(i in dict_1):
             resultado+=dict_1[i]
