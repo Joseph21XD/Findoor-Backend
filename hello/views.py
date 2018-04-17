@@ -494,5 +494,32 @@ def seguido_delete(request, id_persona, tok):
 	else:
 		raise Http404
 
+def loginfacebook(request, name, lastName, isFace, mail, pwd, img):
+	mail= deparsear(mail)
+	name= deparsear(name)
+	lastName= deparsear(lastName)
+	pwd= deparsear(pwd)
+	img= deparsear(img)
+	tok=getToken()
+	validate= Persona.objects.get(correo=mail)
+	person=[]
+	if(len(validate)>0):
+		validate[0].nombre=name
+		validate[0].apellido=lastName
+		validate[0].isFacebook=isface
+		validate[0].correo=mail
+		validate[0].contrasenna=pwd
+		validate[0].imagen=img
+		validate[0].token=tok
+		validate[0].save()
+		person.append(validate[0])
+	else:
+		p= Persona(nombre= name, apellido= lastName,  isFacebook= isFace, correo=mail , contrasenna= pwd, imagen= img, token= tok)
+		p.save()
+		person.append(p)
+	if(len(person)>0):
+		persona="{ id : "+str(person[0].id)+" , nombre : "+parsear(person[0].nombre)+" , apellido : "+parsear(person[0].apellido)+" , imagen : "+parsear(person[0].imagen)+" , isface : "+parsear(str(person[0].isFacebook))+" , correo : "+parsear(person[0].correo)+" , contrasenna : "+parsear(person[0].contrasenna)+" , token : "+person[0].token+" }"
+		return HttpResponse(persona)
+	else:
+		raise Http404
 
-	
