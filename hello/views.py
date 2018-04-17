@@ -269,44 +269,7 @@ def sitio_close(request, lat , lon, tok):
 		return HttpResponse(sitioToJson(lista, tok))
 	else:
 		raise Http404
-	
-def parsear(s):
-	dict_1= {":":"D", "/":"S",".":"P","_":"R","-":"G",",":"C","&":"A","%":"V","=":"E","?":"I","@":"K",
-         "!":"U","#":"W","¡":"B","¿":"F","<":"H",">":"J","[":"L","]":"M","(":"N",")":"O","\n":"Q",
-         "\"":"T"," ":"X",";":"Y", "$":"Z", "á":"_A", "é":"_E", "í":"_I", "ó":"_O", "ú":"_U", "Á":"_B", "É":"_C","Í":"_D", "Ó":"_F", "Ú":"_G"}
-	lista= list(s)
-	resultado=""
-	for i in lista:
-		if(i in dict_1):
-			resultado+=dict_1[i]
-		elif(i.islower() or i.isdigit()):
-			resultado+=i
-		elif(i.isupper()):
-			resultado+="_"+i.lower()
-	return resultado
-
-def deparsear(s):
-    dict_1= {"D":":", "S":"/","P":".","R":"_","G":"-","C":",","A":"&","V":"%","E":"=","I":"?","K":"@",
-         "U":"!","W":"#","B":"¡","F":"¿","H":"<","J":">","L":"[","M":"]","N":"(","O":")","Q":"\n","T":"\"","X":" ","Y":";", "Z":"$"}
-	dict_2={ "A":"á", "E":"é", "I":"í", "O":"ó", "U":"ú", "B":"Á", "C":"É","D":"Í", "F":"Ó", "G":"Ú"}
-    lista= list(s)
-    resultado=""
-    est= True
-    for i in lista:
-        if(est==False):
-			if(i.isupper()):
-				resultado+=dict_2[i]
-			else:
-				resultado+=i.upper()
-            est= True
-        elif(i in dict_1):
-            resultado+=dict_1[i]
-        elif(i.islower() or i.isdigit()):
-            resultado+=i
-        elif(i == "_"):
-            est= False
-    return resultado
-	
+		
 def coorToInt(coor):
 	lista= list(coor)
 	i= lista.index(".")
@@ -525,3 +488,38 @@ def login_facebook(request, name, lastName, isFace, mail, pwd, img):
 	else:
 		raise Http404
 
+def parsear(s):
+	dict_1= {":":"D", "/":"S",".":"P","_":"R","-":"G",",":"C","&":"A","%":"V","=":"E","?":"I","@":"K",
+         "!":"U","#":"W","¡":"B","¿":"F","<":"H",">":"J","[":"L","]":"M","(":"N",")":"O","\n":"Q",
+         "\"":"T"," ":"X",";":"Y", "$":"Z", "á":"_A", "é":"_E", "í":"_I", "ó":"_O", "ú":"_U", "Á":"_B", "É":"_C","Í":"_D", "Ó":"_F", "Ú":"_G"}
+	lista= list(s)
+	resultado=""
+	for i in lista:
+		if(i in dict_1):
+			resultado+=dict_1[i]
+		elif(i.islower() or i.isdigit()):
+			resultado+=i
+		elif(i.isupper()):
+			resultado+="_"+i.lower()
+	return resultado
+
+def deparsear(s):
+    dict_1= {"D":":", "S":"/","P":".","R":"_","G":"-","C":",","A":"&","V":"%","E":"=","I":"?","K":"@","U":"!","W":"#","B":"¡","F":"¿","H":"<","J":">","L":"[","M":"]","N":"(","O":")","Q":"\n","T":"\"","X":" ","Y":";", "Z":"$"}
+	dict_2={ "A":"á", "E":"é", "I":"í", "O":"ó", "U":"ú", "B":"Á", "C":"É","D":"Í", "F":"Ó", "G":"Ú"}
+	lista= list(s)
+	resultado=""
+	est= True
+	for i in lista:
+		if(est==False):
+			if(i.isupper()):
+				resultado+=dict_2[i]
+			else:
+				resultado+=i.upper()
+			est= True
+		elif(i in dict_1):
+			resultado+=dict_1[i]
+		elif(i.islower() or i.isdigit()):
+			resultado+=i
+		elif(i == "_"):
+			est= False
+	return resultado
