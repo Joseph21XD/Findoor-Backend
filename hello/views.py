@@ -523,3 +523,5 @@ def deparsear(s):
 		elif(i == "_"):
 			est= False
 	return resultado
+	
+	
