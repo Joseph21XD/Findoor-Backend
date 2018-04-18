@@ -523,4 +523,36 @@ def deparsear(s):
 			est= False
 	return resultado
 	
+def search(request, name, tok):
+	validate= Persona.objects.filter(token=tok)
+	if(len(validate)>0):
+		tok=getToken()
+		validate[0].token=tok
+		validate[0].save()
+		name= deparsear(name)
+		personas= Persona.objects.all()
+		lista=[]
+		for i in personas:
+			estado= False
+			if(name==i.correo):
+				estado=True
+				lista.add(i)
+			if(estado==False):
+				estado= container(name, i.nombre, i.apellido)
+				if(estado==True):
+					lista.add(i)
+		return HttpResponse(lista_persona(lista, validate[0].token))
+	else:
+		raise Http404
 	
+def container(key, nombre, apellido):
+	listaKey= key.split(" ")
+	listaNom= nombre.split(" ")
+	listaapellido= apellido.split(" ")
+	for i in listaKey:
+		if(i in listaNom):
+			return True
+		if(i in listaapellido):
+			return True
+	return False
+

@@ -40,4 +40,5 @@ urlpatterns = [
 	url(r'^sitio/delete/TYPE=(?P<type>[-\w]+)/(?P<id_site>[-\w]+)/KEY=(?P<tok>[-\w]+)/$', hello.views.sitio_type_delete, name='sitio_type_delete'),
 	url(r'^persona/delete/(?P<id_persona>\d+)/KEY=(?P<tok>[-\w]+)/$', hello.views.seguido_delete, name='seguido_delete'),
 	url(r'^persona/facebook/(?P<name>[-\w]+)/(?P<lastName>[-\w]+)/(?P<isFace>\d+)/(?P<mail>[-\w]+)/(?P<pwd>[-\w]+)/(?P<img>[-\w]+)/$',hello.views.login_facebook, name='login_facebook'),
+	url(r'^persona/search/(?P<name>\d+)/KEY=(?P<tok>[-\w]+)/$', hello.views.search, name='search'),
 ]
