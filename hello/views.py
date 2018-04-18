@@ -536,11 +536,11 @@ def search(request, name, tok):
 			estado= False
 			if(name==i.correo):
 				estado=True
-				lista.add(i)
+				lista.append(i)
 			if(estado==False):
 				estado= container(name, i.nombre, i.apellido)
 				if(estado==True):
-					lista.add(i)
+					lista.append(i)
 		return HttpResponse(lista_persona(lista, validate[0].token))
 	else:
 		raise Http404
